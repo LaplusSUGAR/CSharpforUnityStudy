@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SharpStudy
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // 1. 파이썬과 다른 리스트 사용법 (Generic)
-            List<string> inventory = new List<string>();
-            inventory.Add("단검");
-            inventory.Add("물약");
+namespace GameStudy {
+    // 부모 클래스
+    public class Unit {
+        public string name;
+        public virtual void Action() { Console.WriteLine("대기 중..."); }
+    }
 
-            // 2. 엄격한 형변환 (float 뒤에 f를 안 붙이면 에러!)
-            float moveSpeed = 5.5f;
-            int roundedSpeed = (int)moveSpeed; // 소수점 버림
+    // 상속받은 자식 클래스
+    public class Warrior : Unit {
+        public Warrior(string name) { this.name = name; }
+        public override void Action() { Console.WriteLine($"{name}이 칼을 휘두릅니다!"); }
+    }
 
-            // 3. 배열 선언 (크기 고정)
-            string[] skills = new string[3] {"베기", "찌르기", "방어"};
+    class Program {
+        static void Main() {
+            // List (파이썬의 리스트와 비슷)
+            List<Unit> party = new List<Unit>();
+            party.Add(new Warrior("전사1"));
+            party.Add(new Warrior("전사2"));
 
-            Console.WriteLine($"캐릭터 정보: 속도 {roundedSpeed}, 첫번째 스킬 {skills[0]}");
-
-            // 4. 반복문 (파이썬의 for item in list와 비교)
-            foreach (string item in inventory)
-            {
-                Console.WriteLine($"인벤토리 아이템: {item}");
+            // foreach 사용
+            foreach (Unit u in party) {
+                u.Action(); // 다형성: 실제 객체가 Warrior이므로 Warrior의 Action 실행
             }
         }
     }
