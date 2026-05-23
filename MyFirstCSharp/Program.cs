@@ -6,18 +6,22 @@ namespace MyFirstCSharp
     {
         static void Main(string[] args)
         {
-            // 여기에 코드를 작성합니다.
-            string name = "상4";
-            int level = 1;
-            int hp = 100;
+            // 1. 변수 선언과 초기화
+            string characterName = "Gaurdian";
+            int level = 11;
+            float speed = 4.5f;
+            bool isGrounded = true;
 
-            Console.WriteLine("안녕하세요! 유니티 공부를 시작합니다.");
-            Console.WriteLine("나의 이름은: " + name);
-            Console.WriteLine("현재 레벨은: " + level);
-            Console.WriteLine("현재 체력은 " + hp + "입니다.");
+            // 2. 출력 (데이터 확인)
+            Console.WriteLine("==Character Info==");
+            Console.WriteLine("Name: "+characterName);
+            Console.WriteLine("Level: "+level);
+            Console.WriteLine("Moving Speed: "+speed);
+            Console.WriteLine("Is It Grounded? "+isGrounded);
 
-            hp = hp - 20;
-            Console.WriteLine("데미지 20. 현재 체력은 " + hp + "입니다.");
+            // 3. 데이터 변경
+            level = level + 1;
+            Console.WriteLine("Congratulation! Level UP to "+level);
         }
     }
 }
